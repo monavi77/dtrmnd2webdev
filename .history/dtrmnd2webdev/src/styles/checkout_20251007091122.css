@@ -1,0 +1,33 @@
+.checkout-desktop{background:#f6f7f9;min-height:100vh;width:100%;overflow:hidden;}
+.checkout-top{position:sticky;top:0;z-index:10;height:72px;background:#fff;border-bottom:1px solid #e6e8eb;display:flex;align-items:center;justify-content:center;}
+.checkout-top .brand{font-weight:800;letter-spacing:.1em;color:#111;}
+
+.checkout-container{width:100%;max-width:1200px;margin:0 auto;padding:32px 24px;position:relative;height:calc(100vh - 72px);display:grid;grid-template-rows:1fr 1fr;}
+.icon-button{border:1px solid #e6e8eb;background:#fff;color:#111;width:40px;height:40px;border-radius:10px;cursor:pointer;}
+.back-button{position:absolute;top:24px;left:8px;}
+
+.placeholder-panel{display:none;}
+
+.checkout-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start;}
+.top-fill{width:100%;height:100%;}
+.actions{display:grid;gap:12px;}
+.action-button{display:flex;align-items:center;justify-content:space-between;width:100%;background:#fff;color:#111;border:1px solid #e6e8eb;border-radius:12px;padding:14px 16px;}
+.action-button.primary{background:#222;color:#fff;border-color:#222;justify-content:center;}
+.action-button-left{display:flex;gap:12px;align-items:flex-start;}
+.action-title{font-weight:700;text-align:left;}
+.action-subtitle{color:#6b7280;font-size:12px;margin-top:2px;text-align:left;}
+.action-right-label{background:#efeff1;padding:6px 10px;border-radius:8px;font-weight:600;font-size:12px;border:none;cursor:pointer;}
+
+.bottom-nav{position:sticky; bottom:16px; left:0; right:0; margin:16px auto 0; display:flex; gap:28px; width:max-content; background:rgba(255,255,255,0.9); backdrop-filter: blur(6px); border:1px solid #e6e8eb; border-radius:24px; padding:10px 16px; box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.nav-item{border:none;background:transparent;padding:0;}
+.nav-pill{display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 18px; border-radius:14px; color:#6b7280;}
+.nav-pill.active{background:#0ea5e9; color:#fff;}
+.nav-icon{font-size:18px; line-height:1;}
+.nav-label{font-size:12px; font-weight:600;}
+
+/* Summary sidebar */
+.summary-card{position:sticky; top:96px; background:#fff; border:1px solid #e6e8eb; border-radius:14px; padding:16px; display:grid; gap:12px;}
+.summary-row{display:flex; justify-content:space-between; align-items:center; color:#374151;}
+.summary-total{border-top:1px solid #e6e8eb; padding-top:12px; font-weight:800; font-size:18px;}
+.summary-cta{margin-top:4px;}
+

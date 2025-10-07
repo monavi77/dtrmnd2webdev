@@ -1,0 +1,31 @@
+.home-root { background:#f6f7f9; min-height:100vh; }
+.home-bar { position:sticky; top:0; z-index:10; height:72px; background:#fff; border-bottom:1px solid #e6e8eb; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; }
+.home-bar .title { font-weight:800; letter-spacing:.1em; }
+.home-bar .ghost { border:none; background:transparent; }
+.home-bar .back { margin-left:16px; width:36px; height:36px; border-radius:8px; background:#222; color:#fff; }
+.home-bar .bookmark { justify-self:end; margin-right:16px; font-size:18px; }
+
+.container { max-width:1280px; margin:0 auto; padding:0 24px; }
+.search-row { display:grid; grid-template-columns:1fr auto; gap:12px; margin:16px 0 8px; }
+.search { display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #e6e8eb; border-radius:12px; padding:10px 14px; }
+.search input { width:100%; border:none; outline:none; background:transparent; }
+.filters { border:1px solid #e6e8eb; background:#fff; border-radius:12px; padding:10px 14px; }
+
+.chips { display:flex; gap:10px; }
+.chip { border:1px solid #e6e8eb; background:#fff; border-radius:999px; padding:8px 14px; }
+.chip.active { background:#0ea5e9; color:#fff; border-color:#0ea5e9; }
+
+.grid { margin:16px 0 96px; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; }
+.card { background:#fff; border:1px solid #e6e8eb; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+.card-media { position:relative; background-size:cover; background-position:center; aspect-ratio:4/3; }
+.badge { position:absolute; top:8px; left:8px; font-size:12px; background:#ffffff; border-radius:8px; padding:4px 8px; border:1px solid #e6e8eb; }
+.heart { position:absolute; top:8px; right:8px; width:28px; height:28px; border-radius:50%; border:1px solid #e6e8eb; background:#fff; }
+.card-meta { display:flex; justify-content:space-between; padding:10px 12px; }
+.card-name { font-weight:600; }
+.card-price { color:#059669; font-weight:700; }
+.add-line { margin:10px; border:1px solid #e6e8eb; border-radius:10px; padding:10px 12px; background:#fff; display:flex; align-items:center; gap:8px; justify-content:center; }
+
+.tabs { position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:#fff; border:1px solid #e6e8eb; border-radius:20px; padding:10px; display:flex; gap:24px; }
+.tab { border:none; background:transparent; padding:8px 14px; border-radius:12px; }
+.tab.active { background:#0ea5e9; color:#fff; }
+

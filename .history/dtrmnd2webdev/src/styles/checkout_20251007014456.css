@@ -1,0 +1,20 @@
+.checkout-desktop{background:#f6f7f9;min-height:100vh;width:100%;}
+.checkout-top{position:sticky;top:0;z-index:10;height:72px;background:#fff;border-bottom:1px solid #e6e8eb;display:flex;align-items:center;justify-content:center;}
+.checkout-top .brand{font-weight:800;letter-spacing:.1em;}
+
+.checkout-container{width:100%;max-width:640px;margin:0 auto;padding:24px;position:relative;}
+.icon-button{border:none;background:#222;color:#fff;width:36px;height:36px;border-radius:8px;cursor:pointer;}
+.back-button{position:absolute;top:24px;left:24px;}
+
+.placeholder-panel{height:420px;background:#fff;border:1px solid #e6e8eb;border-radius:14px;}
+
+.actions{margin-top:20px;display:grid;gap:12px;}
+.action-button{display:flex;align-items:center;justify-content:space-between;width:100%;background:#fff;color:#111;border:1px solid #e6e8eb;border-radius:12px;padding:14px 16px;cursor:pointer;}
+.action-button.primary{background:#222;color:#fff;border-color:#222;justify-content:center;}
+.action-button-left{display:flex;gap:12px;align-items:center;}
+.action-icon{font-size:18px;}
+.action-title{font-weight:700;}
+.action-subtitle{color:#6b7280;font-size:12px;margin-top:2px;}
+.action-right-label{background:#efeff1;padding:6px 10px;border-radius:8px;font-weight:600;font-size:12px;}
+
+

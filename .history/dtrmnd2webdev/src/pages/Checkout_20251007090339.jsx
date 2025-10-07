@@ -1,17 +1,15 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 import ActionButton from '../components/ActionButton'
 import '../styles/checkout.css'
 
 export default function Checkout() {
-  const navigate = useNavigate()
   const handleBack = () => window.history.back()
 
   return (
     <div className="checkout-desktop">
       <header className="checkout-top">
-        <div className="brand">Bag</div>
+        <div className="brand">DTRMND</div>
       </header>
 
       <div className="checkout-container">
@@ -50,11 +48,7 @@ export default function Checkout() {
             <div className="summary-row"><span>Taxes</span><span>$21.37</span></div>
             <div className="summary-row summary-total"><span>Total</span><span>$296.12</span></div>
             <div className="summary-cta">
-              <button className="action-button primary" onClick={() => navigate('/order-confirmation')}>
-                <div className="action-texts">
-                  <div className="action-title">Place Your Order</div>
-                </div>
-              </button>
+              <ActionButton variant="placeOrder" title="Place Your Order" onClick={() => {}} />
             </div>
           </aside>
         </div>

@@ -1,7 +1,3 @@
-import imgWhiteSweater from "../assets/images/white sweater.jpg";
-import imgWhiteShirt from "../assets/images/white shirt.jpg";
-import imgSkirt from "../assets/images/skirt.jpg";
-
 export const PRODUCTS = [
   {
     id: "blazer",
@@ -32,20 +28,23 @@ export const PRODUCTS = [
     title: "STAR SWEATSHIRT",
     price: "$59.88",
     tag: "Top",
-    image: imgWhiteSweater,
+    image:
+      "https://source.unsplash.com/NnUwxzkekxY/1200x800",
   },
   {
     id: "shirt",
     title: "FANCY WHITE SHIRT",
     price: "$88.99",
     tag: "Top",
-    image: imgWhiteShirt,
+    image:
+      "https://images.unsplash.com/https://unsplash.com/photos/a-young-man-with-a-pair-of-sunglasses-on-his-face-YWymqfV68Ds-1520975892450-38c4f04a63ae?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: "skirt",
     title: "MINI SKIRT WITH POCKETS",
     price: "$49.79",
     tag: "Skirt",
-    image: imgSkirt,
+    image:
+      "https://images.unsplash.com/photo-1564463835932-1a4a1c3454ca?q=80&w=1200&auto=format&fit=crop",
   },
 ];
