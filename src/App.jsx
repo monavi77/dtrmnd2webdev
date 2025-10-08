@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import Login from "./pages/Login";
-import Homepage from "./pages/homepage";
+import Homepage from "./pages/Homepage";
 import Browse from "./pages/Browse";
 import SearchResults from "./pages/SearchResults";
 import ProductPage from "./pages/ProductPage";
