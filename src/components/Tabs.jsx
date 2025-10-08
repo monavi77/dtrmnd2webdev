@@ -10,7 +10,7 @@ export default function Tabs({ active = "home" }) {
         <Home size={20} />
         <span>Home</span>
       </button>
-      <button className={c("browse")} onClick={() => nav("/search")}>
+      <button className={c("browse")} onClick={() => nav("/browse")}>
         <Grid2x2 size={20} />
         <span>Browse</span>
       </button>

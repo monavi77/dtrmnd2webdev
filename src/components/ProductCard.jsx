@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
       </div>
       <button className="addtocart" onClick={() => add(product)}>
         <ShoppingBag size={16} />
-        Add to bag
+        ADD TO BAG
       </button>
     </article>
   );

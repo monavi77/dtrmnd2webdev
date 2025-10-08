@@ -1,10 +1,10 @@
 import Header from "../components/Header";
 import { useParams, useNavigate } from "react-router-dom";
+import CartButton from "../components/CartButton";
 import { PRODUCTS } from "../data/products";
+import { ShoppingBag } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
-/* Tabs and content labels mirror the mock: description, materials, care, reviews, delivery & payment,
-   title, price, rating count, color/size, and "ADD TO BAG". :contentReference[oaicite:4]{index=4} */
 export default function ProductPage() {
   const { id } = useParams();
   const nav = useNavigate();
@@ -13,56 +13,83 @@ export default function ProductPage() {
 
   return (
     <>
-      <Header title="Product" />
-      <div className="card" style={{ overflow: "hidden" }}>
-        <div className="card__imagewrap">
-          <img src={product.image} alt={product.title} />
-        </div>
-        <div style={{ padding: 16, display: "grid", gap: 12 }}>
-          <h2 className="card__title" style={{ fontSize: 18 }}>
-            {product.title}
-          </h2>
-          <div style={{ color: "var(--brand)", fontWeight: 700 }}>
-            {product.price}
-          </div>
-          <div style={{ color: "var(--muted)", fontSize: 12 }}>(58)</div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {[
-              "DESCRIPTION & SIZE",
-              "MATERIALS",
-              "CARE GUIDE",
-              "REVIEWS",
-              "DELIVERY AND PAYMENT",
-            ].map((t) => (
-              <span key={t} className="chip">
-                {t}
-              </span>
-            ))}
-          </div>
-          <div style={{ display: "grid", gap: 10 }}>
-            <div style={{ fontSize: 12, color: "var(--muted)" }}>
-              COLOR: GREY
+      <Header title="DTRMND" right={<CartButton />} />
+      <div className="container">
+        <div className="product">
+          {/* GALLERY */}
+          <section className="product__gallery">
+            <div className="product__hero">
+              <img src={product.image} alt={product.title} loading="lazy" />
             </div>
-            <div style={{ display: "flex", gap: 8 }}>
-              {["S", "XS", "M", "L", "XL"].map((s, i) => (
-                <button
-                  key={s}
-                  className={`chip ${i === 2 ? "chip--active" : ""}`}
-                >
-                  {s}
+            {/* Thumbs (static placeholders for now) */}
+            <div className="product__thumbs">
+              {[product.image, product.image, product.image].map((src, i) => (
+                <button key={i} className="product__thumb">
+                  <img src={src} alt={`${product.title} ${i + 1}`} />
                 </button>
               ))}
             </div>
-          </div>
-          <button
-            className="addtocart"
-            onClick={() => {
-              add(product);
-              nav("/checkout");
-            }}
-          >
-            ADD TO BAG
-          </button>
+          </section>
+
+          {/* SUMMARY */}
+          <aside className="product__summary">
+            <h1 className="product__title">{product.title}</h1>
+            <div className="product__price">{product.price}</div>
+            <div className="product__rating">(58)</div>
+
+            <div className="product__section">
+              <div className="product__label">COLOR</div>
+              <div className="product__value">Grey</div>
+            </div>
+
+            <div className="product__section">
+              <div className="product__label">SIZE</div>
+              <div className="product__sizes">
+                {["XS", "S", "M", "L", "XL"].map((s) => (
+                  <button
+                    key={s}
+                    className={`chip ${s === "M" ? "chip--active" : ""}`}
+                    aria-label={`Select size ${s}`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button
+              className="addtocart product__cta"
+              onClick={() => {
+                add(product);
+                nav("/checkout");
+              }}
+            >
+              <ShoppingBag size={16} />
+              ADD TO BAG
+            </button>
+
+            <div className="product__tabs">
+              {[
+                "DESCRIPTION & SIZE",
+                "MATERIALS",
+                "CARE GUIDE",
+                "REVIEWS",
+                "DELIVERY AND PAYMENT",
+              ].map((t, i) => (
+                <button
+                  key={t}
+                  className={`product__tab ${i === 0 ? "is-active" : ""}`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+
+            <p className="product__copy">
+              Minimal, premium fit crafted with soft-hand fabric. True to size
+              with a relaxed silhouette. Model is 5'9" wearing size M.
+            </p>
+          </aside>
         </div>
       </div>
     </>

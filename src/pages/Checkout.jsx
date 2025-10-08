@@ -1,8 +1,8 @@
 import Header from "../components/Header";
+import CartButton from "../components/CartButton";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
-/* Mirrors your Checkout details: bag list, shipping address, shipment, payment, and place order button. :contentReference[oaicite:5]{index=5} */
 export default function Checkout() {
   const { items, remove, clear } = useCart();
   const nav = useNavigate();
@@ -14,8 +14,8 @@ export default function Checkout() {
 
   return (
     <>
-      <Header title="Bag" />
-      <div style={{ display: "grid", gap: 12 }}>
+      <Header title="Bag" right={<CartButton />} />
+      <div className="container" style={{ display: "grid", gap: 12 }}>
         <div className="card" style={{ padding: 12 }}>
           {items.length === 0 ? (
             <p style={{ color: "var(--muted)" }}>Your bag is empty.</p>

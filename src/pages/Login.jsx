@@ -1,9 +1,8 @@
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import SsoButton from "../components/SsoButton";
 
-/* Text matches the PDF: "Sign In", greeting, email/password, 'Forgot Password?', 
-   social sign-in area, and sign-up prompt. :contentReference[oaicite:0]{index=0} */
 export default function Login() {
   const nav = useNavigate();
   const [email, setEmail] = useState("abcd.12@gmail.com"); // matches mock
@@ -16,19 +15,19 @@ export default function Login() {
 
   return (
     <>
-      <Header title="Sign In" />
+      <Header title="Sign In" className="card__meta" showBack={false} />
+
       <form
         className="card"
         onSubmit={submit}
         style={{ maxWidth: 420, margin: "0 auto" }}
       >
         <div className="card__meta" style={{ padding: "16px 16px 0" }}>
-          <div>
-            <h3 className="card__title">
-              Hi! Welcome Back, you’ve been missed
-            </h3>
-          </div>
+          <h3 className="login-greeting">
+            Hi! Welcome Back, you’ve been missed
+          </h3>
         </div>
+
         <div style={{ padding: 16, display: "grid", gap: 12 }}>
           <label>
             <div
@@ -65,10 +64,10 @@ export default function Login() {
             or sign in with
           </div>
           <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}
+            style={{ display: "flex", justifyContent: "center", gap: "12px" }}
           >
-            <button className="pill">Google</button>
-            <button className="pill">Apple</button>
+            <SsoButton type="google" />
+            <SsoButton type="apple" />
           </div>
           <div style={{ textAlign: "center" }}>
             <span style={{ color: "var(--muted)" }}>
