@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Checkout() {
-  const { items, remove, increment, removeAll, clear } = useCart();
+  const { items, remove, clear } = useCart();
   const nav = useNavigate();
 
   // Helper functions for localStorage
@@ -265,111 +265,54 @@ export default function Checkout() {
   };
 
   const total = items.reduce(
-    (acc, item) => {
-      const price = Number((item.product.price || "$0").replace(/[^0-9.]/g, ""));
-      return acc + price * item.quantity;
-    },
+    (acc, p) => acc + Number((p.price || "$0").replace(/[^0-9.]/g, "")),
     0
   );
 
   return (
     <>
-      <Header title="Checkout" />
+      <Header title="Bag" />
       <div className="container" style={{ display: "grid", gap: 12 }}>
         <div className="card" style={{ padding: 12 }}>
           {items.length === 0 ? (
             <p style={{ color: "var(--muted)" }}>Your bag is empty.</p>
           ) : (
-            items.map((item, i) => {
-              const p = item.product;
-              const itemPrice = Number((p.price || "$0").replace(/[^0-9.]/g, ""));
-              const totalPrice = itemPrice * item.quantity;
-              return (
-                <div
-                  key={i}
+            items.map((p, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "64px 1fr auto",
+                  gap: 12,
+                  alignItems: "center",
+                  padding: "8px 0",
+                  borderBottom: "1px solid var(--ring)",
+                }}
+              >
+                <img
+                  src={p.image}
+                  alt={p.title}
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "64px 1fr auto",
-                    gap: 12,
-                    alignItems: "center",
-                    padding: "8px 0",
-                    borderBottom: "1px solid var(--ring)",
+                    width: 64,
+                    height: 64,
+                    objectFit: "cover",
+                    borderRadius: 8,
                   }}
-                >
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    style={{
-                      width: 64,
-                      height: 64,
-                      objectFit: "cover",
-                      borderRadius: 8,
-                    }}
-                  />
-                  <div>
-                    <div style={{ fontWeight: 600 }}>{p.title}</div>
-                    <div style={{ color: "var(--muted)", fontSize: 12 }}>
-                      Size: M • Quantity: {item.quantity}
-                    </div>
-                  </div>
-                  <div style={{ textAlign: "right" }}>
-                    <div style={{ marginBottom: 8 }}>${totalPrice.toFixed(2)}</div>
-                    <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "flex-end" }}>
-                      <button
-                        onClick={() => remove(i)}
-                        style={{
-                          width: 32,
-                          height: 32,
-                          borderRadius: 4,
-                          border: "1px solid var(--ring)",
-                          backgroundColor: "white",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 18,
-                          fontWeight: 600,
-                          color: "var(--foreground)",
-                        }}
-                        aria-label="Decrease quantity"
-                      >
-                        −
-                      </button>
-                      <span style={{ minWidth: 24, textAlign: "center", fontWeight: 600 }}>
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => increment(i)}
-                        style={{
-                          width: 32,
-                          height: 32,
-                          borderRadius: 4,
-                          border: "1px solid var(--ring)",
-                          backgroundColor: "white",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 18,
-                          fontWeight: 600,
-                          color: "var(--foreground)",
-                        }}
-                        aria-label="Increase quantity"
-                      >
-                        +
-                      </button>
-                    </div>
-                    <button
-                      className="linklike"
-                      onClick={() => removeAll(i)}
-                      style={{ fontSize: 12, marginTop: 4, display: "block", width: "100%" }}
-                    >
-                      Remove
-                    </button>
+                />
+                <div>
+                  <div style={{ fontWeight: 600 }}>{p.title}</div>
+                  <div style={{ color: "var(--muted)", fontSize: 12 }}>
+                    Size: M
                   </div>
                 </div>
-              );
-            })
+                <div style={{ textAlign: "right" }}>
+                  <div>{p.price}</div>
+                  <button className="linklike" onClick={() => remove(i)}>
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))
           )}
           {items.length > 0 && (
             <div

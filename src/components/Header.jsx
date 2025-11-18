@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export default function Header({ title = "DTRMND", showBack = true }) {
+export default function Header({ title = "DTRMND", showBack = true, right }) {
   const nav = useNavigate();
   return (
     <header className="store__header">
@@ -13,7 +13,7 @@ export default function Header({ title = "DTRMND", showBack = true }) {
         <span />
       )}
       <h1 className="store__title">{title}</h1>
-      <span />
+      {right || <span />}
     </header>
   );
 }

@@ -1,12 +1,11 @@
 import { Heart, ShoppingBag } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 
 export default function ProductCard({ product, onAdd }) {
   const { add } = useCart();
   const { toggle, isFavorite } = useFavorites();
-  const nav = useNavigate();
   const favorite = isFavorite(product.id);
 
   const handleAdd = () => {
@@ -15,7 +14,7 @@ export default function ProductCard({ product, onAdd }) {
       onAdd(product);
       return;
     }
-    nav("/checkout");
+    // Overlay will be shown automatically via CartContext
   };
   return (
     <article className="card">

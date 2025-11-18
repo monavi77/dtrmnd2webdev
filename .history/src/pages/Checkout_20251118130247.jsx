@@ -313,59 +313,17 @@ export default function Checkout() {
                     </div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ marginBottom: 8 }}>${totalPrice.toFixed(2)}</div>
-                    <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "flex-end" }}>
-                      <button
-                        onClick={() => remove(i)}
-                        style={{
-                          width: 32,
-                          height: 32,
-                          borderRadius: 4,
-                          border: "1px solid var(--ring)",
-                          backgroundColor: "white",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 18,
-                          fontWeight: 600,
-                          color: "var(--foreground)",
-                        }}
-                        aria-label="Decrease quantity"
-                      >
-                        −
+                    <div>${totalPrice.toFixed(2)}</div>
+                    <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 4 }}>
+                      <button className="linklike" onClick={() => remove(i)}>
+                        {item.quantity > 1 ? "-" : "Remove"}
                       </button>
-                      <span style={{ minWidth: 24, textAlign: "center", fontWeight: 600 }}>
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => increment(i)}
-                        style={{
-                          width: 32,
-                          height: 32,
-                          borderRadius: 4,
-                          border: "1px solid var(--ring)",
-                          backgroundColor: "white",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 18,
-                          fontWeight: 600,
-                          color: "var(--foreground)",
-                        }}
-                        aria-label="Increase quantity"
-                      >
-                        +
-                      </button>
+                      {item.quantity > 1 && (
+                        <button className="linklike" onClick={() => removeAll(i)}>
+                          Remove All
+                        </button>
+                      )}
                     </div>
-                    <button
-                      className="linklike"
-                      onClick={() => removeAll(i)}
-                      style={{ fontSize: 12, marginTop: 4, display: "block", width: "100%" }}
-                    >
-                      Remove
-                    </button>
                   </div>
                 </div>
               );

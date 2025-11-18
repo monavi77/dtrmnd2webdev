@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PRODUCTS } from "../data/products";
 import { useCart } from "../context/CartContext";
 
@@ -7,7 +7,6 @@ import { useCart } from "../context/CartContext";
    title, price, rating count, color/size, and "ADD TO BAG". :contentReference[oaicite:4]{index=4} */
 export default function ProductPage() {
   const { id } = useParams();
-  const nav = useNavigate();
   const { add } = useCart();
   const product = PRODUCTS.find((p) => p.id === id) || PRODUCTS[0];
 
@@ -58,7 +57,7 @@ export default function ProductPage() {
             className="addtocart"
             onClick={() => {
               add(product);
-              nav("/checkout");
+              // Overlay will be shown automatically via CartContext
             }}
           >
             ADD TO BAG

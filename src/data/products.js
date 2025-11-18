@@ -29,7 +29,7 @@ export const PRODUCTS = [
     price: "$59.88",
     tag: "Top",
     image:
-      "https://images.unsplash.com/photo-1520975922284-8b456906c813?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1200&auto=format&fit=crop",
   },
   {
     id: "shirt",
@@ -37,7 +37,7 @@ export const PRODUCTS = [
     price: "$88.99",
     tag: "Top",
     image:
-      "https://images.unsplash.com/https://unsplash.com/photos/a-young-man-with-a-pair-of-sunglasses-on-his-face-YWymqfV68Ds-1520975892450-38c4f04a63ae?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=1200&auto=format&fit=crop",
   },
   {
     id: "skirt",
@@ -45,6 +45,6 @@ export const PRODUCTS = [
     price: "$49.79",
     tag: "Skirt",
     image:
-      "https://images.unsplash.com/photo-1564463835932-1a4a1c3454ca?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=1200&auto=format&fit=crop",
   },
 ];
