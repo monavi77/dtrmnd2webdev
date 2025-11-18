@@ -1,12 +1,22 @@
 import { Heart, ShoppingBag } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, onAdd }) {
   const { add } = useCart();
   const { toggle, isFavorite } = useFavorites();
+  const nav = useNavigate();
   const favorite = isFavorite(product.id);
+
+  const handleAdd = () => {
+    add(product);
+    if (onAdd) {
+      onAdd(product);
+      return;
+    }
+    nav("/checkout");
+  };
   return (
     <article className="card">
       <Link to={`/product/${product.id}`} className="card__imagewrap">
@@ -30,7 +40,7 @@ export default function ProductCard({ product }) {
         <h3 className="card__title">{product.title}</h3>
         <span className="card__price">{product.price}</span>
       </div>
-      <button className="addtocart" onClick={() => add(product)}>
+      <button className="addtocart" onClick={handleAdd}>
         <ShoppingBag size={16} />
         Add to bag
       </button>
