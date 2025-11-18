@@ -196,6 +196,10 @@
   background: var(--brand);
   color: #fff;
 }
+.fav--active {
+  background: var(--brand);
+  color: #fff;
+}
 
 .card__meta {
   display: flex;

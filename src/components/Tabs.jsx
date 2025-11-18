@@ -14,7 +14,7 @@ export default function Tabs({ active = "home" }) {
         <Grid2x2 size={20} />
         <span>Browse</span>
       </button>
-      <button className={c("wishlist")}>
+      <button className={c("wishlist")} onClick={() => nav("/favorites")}>
         <Heart size={20} />
         <span>Wishlist</span>
       </button>
