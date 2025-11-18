@@ -1,14 +1,19 @@
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export default function Header({ title = "DTRMND" }) {
+export default function Header({ title = "DTRMND", showBack = true }) {
   const nav = useNavigate();
   return (
     <header className="store__header">
-      <button className="icon-btn" aria-label="Back" onClick={() => nav(-1)}>
-        <ArrowLeft size={18} />
-      </button>
+      {showBack ? (
+        <button className="icon-btn" aria-label="Back" onClick={() => nav(-1)}>
+          <ArrowLeft size={18} />
+        </button>
+      ) : (
+        <span />
+      )}
       <h1 className="store__title">{title}</h1>
+      <span />
     </header>
   );
 }

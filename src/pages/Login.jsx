@@ -16,7 +16,7 @@ export default function Login() {
 
   return (
     <>
-      <Header title="Sign In" />
+      <Header title="Sign In" showBack={false} />
       <form
         className="card"
         onSubmit={submit}
@@ -29,7 +29,7 @@ export default function Login() {
             </h3>
           </div>
         </div>
-        <div style={{ padding: 16, display: "grid", gap: 12 }}>
+        <div style={{ padding: 16, display: "grid", gap: 28 }}>
           <label>
             <div
               style={{ fontSize: 12, color: "var(--muted)", marginBottom: 6 }}
@@ -55,7 +55,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <button className="addtocart" type="submit">
+          <button className="signin" type="submit">
             Sign In
           </button>
           <button type="button" className="linklike">
