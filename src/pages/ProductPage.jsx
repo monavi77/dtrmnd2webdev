@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import { useParams, useNavigate } from "react-router-dom";
-import { PRODUCTS } from "../data/products";
 import { useCart } from "../context/CartContext";
+import { useProducts } from "../context/ProductsContext";
 
 /* Tabs and content labels mirror the mock: description, materials, care, reviews, delivery & payment,
    title, price, rating count, color/size, and "ADD TO BAG". :contentReference[oaicite:4]{index=4} */
@@ -9,7 +9,28 @@ export default function ProductPage() {
   const { id } = useParams();
   const nav = useNavigate();
   const { add } = useCart();
-  const product = PRODUCTS.find((p) => p.id === id) || PRODUCTS[0];
+  const { products, loading } = useProducts();
+  const product = products.find((p) => String(p.id) === id) || products[0];
+
+  if (loading && !product) {
+    return (
+      <>
+        <Header title="Product" />
+        <p style={{ color: "var(--muted)" }}>Loading product…</p>
+      </>
+    );
+  }
+
+  if (!product) {
+    return (
+      <>
+        <Header title="Product" />
+        <p style={{ color: "var(--muted)" }}>
+          We couldn’t find that product.
+        </p>
+      </>
+    );
+  }
 
   return (
     <>

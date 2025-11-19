@@ -18,7 +18,7 @@ export default function Tabs({ active = "home" }) {
         <Heart size={20} />
         <span>Wishlist</span>
       </button>
-      <button className={c("profile")}>
+      <button className={c("profile")} onClick={() => nav("/profile")}>
         <User size={20} />
         <span>Profile</span>
       </button>

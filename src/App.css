@@ -75,6 +75,12 @@
   color: var(--text);
   font-size: 14px;
 }
+
+.search__actions {
+  display: flex;
+  gap: 8px;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;
@@ -89,6 +95,10 @@
 }
 .pill:hover {
   background: #f0f0f0;
+}
+.pill--active {
+  background: var(--brand);
+  color: #fff;
 }
 
 /* Chips */
@@ -122,6 +132,47 @@
   background: var(--brand);
   border-color: transparent;
 }
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.filter__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.filter__label {
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.filterchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.filterchip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--ring);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.filterchip:hover {
+  background: #f0f0f0;
+}
+.filterchip--active {
+  background: var(--brand);
+  color: #fff;
+  border-color: transparent;
+}
 
 /* Grid */
 .store__grid {
@@ -144,6 +195,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  font-family: Arial;
   background: var(--panel);
   border: 1px solid var(--ring);
   border-radius: 14px;
@@ -157,14 +209,15 @@
 }
 .card__imagewrap {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+  border-bottom: 1px solid var(--ring);
 }
 .card__imagewrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.02);
+  transform: scale(1);
 }
 .badge {
   position: absolute;
@@ -207,6 +260,7 @@
   justify-content: space-between;
   gap: 8px;
   padding: 10px 12px 0;
+  font-family: var(--font-body);
 }
 .card__title {
   font-size: 14px;
@@ -216,30 +270,37 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: var(--font-body);
 }
 .card__price {
   font-size: 13px;
   color: var(--brand);
   font-weight: 600;
+  font-family: var(--font-body);
 }
 
 .addtocart {
-  margin: 10px 12px 12px;
-  padding: 10px 12px;
-  border-radius: 10px;
+  margin: 8px 10px 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
   border: 1px solid var(--ring);
-  background:  var(--brand);
+  background: var(--brand);
   color: #fff;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  font-size: 12px;
+  min-height: 34px;
   cursor: pointer;
   transition: 0.2s;
+}
+.addtocart svg {
+  height: 14px;
+  width: 14px;
 }
 .addtocart:hover {
   background: #f3f4f5;
   color: var(--text);
-  
 }
 
 /* Tab bar */
