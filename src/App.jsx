@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { CartProvider, useCart } from "./context/CartContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import Login from "./pages/Login";
@@ -14,6 +14,8 @@ import FloatingBagButton from "./components/FloatingBagButton";
 
 function AppContent() {
   const { isOverlayOpen, setIsOverlayOpen } = useCart();
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login" || location.pathname === "/";
   
   return (
     <>
@@ -32,7 +34,7 @@ function AppContent() {
           element={<OrderConfirmation />}
         />
       </Routes>
-      <FloatingBagButton />
+      {!isLoginPage && <FloatingBagButton />}
       <BagOverlay
         isOpen={isOverlayOpen}
         onClose={() => setIsOverlayOpen(false)}
