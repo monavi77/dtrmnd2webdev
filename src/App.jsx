@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { CartProvider, useCart } from "./context/CartContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import { ProductsProvider } from "./context/ProductsContext";
@@ -10,6 +16,7 @@ import Checkout from "./pages/Checkout";
 import Bag from "./pages/bag";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Favorites from "./pages/Favorites";
+import Profile from "./pages/Profile";
 import BagOverlay from "./components/BagOverlay";
 import FloatingBagButton from "./components/FloatingBagButton";
 
@@ -34,6 +41,7 @@ function AppContent() {
           path="/order-confirmation"
           element={<OrderConfirmation />}
         />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       {!isLoginPage && <FloatingBagButton />}
       <BagOverlay
@@ -46,14 +54,16 @@ function AppContent() {
 
 export default function App() {
   return (
-    <FavoritesProvider>
-      <CartProvider>
-        <BrowserRouter>
-          <div className="store">
-            <AppContent />
-          </div>
-        </BrowserRouter>
-      </CartProvider>
-    </FavoritesProvider>
+    <ProductsProvider>
+      <FavoritesProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <div className="store">
+              <AppContent />
+            </div>
+          </BrowserRouter>
+        </CartProvider>
+      </FavoritesProvider>
+    </ProductsProvider>
   );
 }
