@@ -1,4 +1,4 @@
-import { Home, Grid2x2, Heart, User } from "lucide-react";
+import { Grid2x2, Heart, Home, Sparkles, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Tabs({ active = "home" }) {
@@ -13,6 +13,10 @@ export default function Tabs({ active = "home" }) {
       <button className={c("browse")} onClick={() => nav("/search")}>
         <Grid2x2 size={20} />
         <span>Browse</span>
+      </button>
+      <button className={c("tryon")} onClick={() => nav("/try-on")}>
+        <Sparkles size={20} />
+        <span>Try-On</span>
       </button>
       <button className={c("wishlist")} onClick={() => nav("/favorites")}>
         <Heart size={20} />

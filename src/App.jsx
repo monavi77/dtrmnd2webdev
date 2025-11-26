@@ -17,6 +17,7 @@ import Bag from "./pages/bag";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
+import TryOn from "./pages/TryOn";
 import BagOverlay from "./components/BagOverlay";
 import FloatingBagButton from "./components/FloatingBagButton";
 
@@ -35,6 +36,7 @@ function AppContent() {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/try-on" element={<TryOn />} />
         <Route path="/bag" element={<Bag />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route

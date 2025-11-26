@@ -4,13 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server/index.js"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "lucide-react": "^0.545.0",
+    "multer": "^2.0.2",
+    "openai": "^6.9.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3"
