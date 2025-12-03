@@ -1,22 +1,30 @@
 import { Search, SlidersHorizontal } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SearchBar({
   placeholder = "Search…",
   onFilterToggle,
   filtersActive = false,
+  target = "/search",
+  initialValue = "",
 }) {
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(initialValue);
   const nav = useNavigate();
+
+  useEffect(() => {
+    setQ(initialValue);
+  }, [initialValue]);
 
   const triggerSearch = () => {
     const query = q.trim();
     if (!query) {
-      nav("/search");
+      nav(target);
       return;
     }
-    nav(`/search?query=${encodeURIComponent(query)}`);
+    const params = new URLSearchParams();
+    params.set("query", query);
+    nav(`${target}?${params.toString()}`);
   };
 
   return (

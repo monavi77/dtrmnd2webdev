@@ -10,7 +10,7 @@ import { FavoritesProvider } from "./context/FavoritesContext";
 import { ProductsProvider } from "./context/ProductsContext";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import SearchResults from "./pages/SearchResults";
+import Browse from "./pages/Browse";
 import ProductPage from "./pages/ProductPage";
 import Checkout from "./pages/Checkout";
 import Bag from "./pages/bag";
@@ -24,9 +24,11 @@ import FloatingBagButton from "./components/FloatingBagButton";
 function AppContent() {
   const { isOverlayOpen, setIsOverlayOpen } = useCart();
   const location = useLocation();
+  const isLandingPage = location.pathname === "/home";
   const isLoginPage = location.pathname === "/login" || location.pathname === "/";
   const hideBagButton =
     isLoginPage ||
+    isLandingPage ||
     location.pathname === "/bag" ||
     location.pathname === "/checkout";
   
@@ -35,9 +37,11 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/women" element={<Home gender="Women" />} />
-        <Route path="/men" element={<Home gender="Men" />} />
-        <Route path="/search" element={<SearchResults />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/browse" element={<Browse />} />
+        <Route path="/women" element={<Browse initialGender="Women" />} />
+        <Route path="/men" element={<Browse initialGender="Men" />} />
+        <Route path="/search" element={<Navigate to="/browse" replace />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/try-on" element={<TryOn />} />
