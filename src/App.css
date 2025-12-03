@@ -500,7 +500,8 @@
   border-radius: 18px;
   cursor: pointer;
   background: var(--panel-2);
-  padding: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
