@@ -812,6 +812,8 @@
   min-height: 48px;
   font-size: 15px;
   font-weight: 700;
+  width: 100%;
+  margin: 0;
 }
 .bag-action-btn--secondary {
   color: #333;
@@ -821,12 +823,13 @@
 
 @media (max-width: 720px) {
   .bag-page {
-    padding: 0 12px;
+    padding: 0;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin: 0 auto;
   }
   .bag-card {
     padding: 14px;
