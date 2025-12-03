@@ -18,17 +18,29 @@ export default function Browse({ initialGender = "All" }) {
   const [showFilters, setShowFilters] = useState(false);
   const query = params.get("query")?.trim() || "";
 
+  const genderFilteredProducts = useMemo(() => {
+    if (gender === "All") return products;
+    return products.filter((product) => product.gender === gender);
+  }, [products, gender]);
+
   const categories = useMemo(() => {
     const unique = new Set();
-    products.forEach((product) => {
-      if (product.tag) unique.add(product.tag);
+    genderFilteredProducts.forEach((product) => {
+      if (product.tag) {
+        const clean = product.tag.replace(/^(womens?|mens?)[-\s]/i, "");
+        unique.add(clean);
+      }
     });
     return ["All", ...Array.from(unique)];
-  }, [products]);
+  }, [genderFilteredProducts]);
 
   useEffect(() => {
     if (categoryIndex > categories.length - 1) setCategoryIndex(0);
   }, [categories, categoryIndex]);
+
+  useEffect(() => {
+    setCategoryIndex(0);
+  }, [gender]);
 
   useEffect(() => {
     if (initialGender === "Women" || initialGender === "Men") {

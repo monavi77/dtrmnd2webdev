@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -11,20 +10,25 @@ export default function Login() {
 
   function submit(e) {
     e.preventDefault();
-    nav("/women"); // go to home after sign-in
+    nav("/home");
   }
 
   return (
     <>
-      <Header title="Sign In" showBack={false} />
+      <div className="home-logo" style={{ marginBottom: 20 }}>
+        <img src="/DTRMND.png" alt="DTRMND logo" style={{ height: 110 }} />
+      </div>
       <form
         className="card"
         onSubmit={submit}
         style={{ maxWidth: 420, margin: "0 auto" }}
       >
-        <div className="card__meta" style={{ padding: "16px 16px 0" }}>
-          <div>
-            <h3 className="card__title">
+        <div
+          className="card__meta"
+          style={{ padding: "16px 16px 0", justifyContent: "center" }}
+        >
+          <div style={{ width: "100%", textAlign: "center" }}>
+            <h3 className="card__title login__title" style={{ textAlign: "center" }}>
               Hi! Welcome Back, you’ve been missed
             </h3>
           </div>
@@ -65,10 +69,29 @@ export default function Login() {
             or sign in with
           </div>
           <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: 14,
+            }}
           >
-            <button className="pill">Google</button>
-            <button className="pill">Apple</button>
+            <button
+              className="pill pill--icon"
+              aria-label="Sign in with Google"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                alt="Google logo"
+                style={{ width: 40, height: 40, objectFit: "contain" }}
+              />
+            </button>
+            <button className="pill pill--icon" aria-label="Sign in with Apple">
+              <img
+                src="https://pngimg.com/uploads/apple_logo/apple_logo_PNG19667.png"
+                alt="Apple logo"
+                style={{ width: 60, height: 62, objectFit: "contain" }}
+              />
+            </button>
           </div>
           <div style={{ textAlign: "center" }}>
             <span style={{ color: "var(--muted)" }}>

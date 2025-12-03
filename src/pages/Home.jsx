@@ -44,7 +44,7 @@ export default function Home() {
         </div>
 
         <div className="home-stack">
-          {heroSpreads.map((hero, idx) => (
+          {heroSpreads.map((hero) => (
             <section
               key={hero.heading}
               className={`home-hero ${hero.video ? "home-hero--video" : ""}`}
