@@ -892,13 +892,14 @@
     max-height: 320px;
   }
   .bag-page {
-    padding: 0 12px;
+    padding: 0 14px;
+    align-items: center;
   }
   .bag-card,
   .bag-actions,
   .bag-subtotal,
   .bag-line {
-    max-width: 360px;
+    max-width: 320px;
     width: 100%;
     margin: 0 auto;
   }
@@ -911,9 +912,10 @@
     height: 60px;
   }
   .bag-line__price {
-    min-width: 110px;
+    min-width: 96px;
   }
   .bag-action-btn {
     font-size: 14px;
+    width: 100%;
   }
 }
