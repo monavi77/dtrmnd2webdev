@@ -5,7 +5,10 @@ import Tabs from "../components/Tabs";
 import { useCart } from "../context/CartContext";
 
 const MAX_FILE_SIZE = 8 * 1024 * 1024; // 8 MB
-const TRY_ON_ENDPOINT = import.meta.env.VITE_TRYON_ENDPOINT?.trim();
+// Use relative path by default (works with any deployment URL)
+// Only use VITE_TRYON_ENDPOINT if explicitly set to a different endpoint
+const envEndpoint = import.meta.env.VITE_TRYON_ENDPOINT?.trim();
+const TRY_ON_ENDPOINT = envEndpoint || "/api/try-on";
 
 const photoTips = [
   "Face the camera with even lighting (no harsh backlight).",

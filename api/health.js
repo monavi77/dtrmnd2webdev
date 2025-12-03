@@ -1,9 +1,16 @@
 const IMAGE_MODEL = "gpt-image-1";
 
 export default function handler(req, res) {
-  // Handle CORS
+  // Handle CORS - allow all Vercel deployments
   const origin = req.headers.origin;
-  const allowedOrigin = process.env.CLIENT_ORIGIN || origin || "*";
+  
+  // Allow if origin is a Vercel domain, or use CLIENT_ORIGIN if set, otherwise allow all
+  let allowedOrigin = "*";
+  if (process.env.CLIENT_ORIGIN) {
+    allowedOrigin = process.env.CLIENT_ORIGIN;
+  } else if (origin && (origin.includes("vercel.app") || origin.includes("localhost"))) {
+    allowedOrigin = origin;
+  }
   
   res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
