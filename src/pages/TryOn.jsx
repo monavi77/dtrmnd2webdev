@@ -5,10 +5,50 @@ import Tabs from "../components/Tabs";
 import { useCart } from "../context/CartContext";
 
 const MAX_FILE_SIZE = 8 * 1024 * 1024; // 8 MB
-// Use relative path by default (works with any deployment URL)
-// Only use VITE_TRYON_ENDPOINT if explicitly set to a different endpoint
-const envEndpoint = import.meta.env.VITE_TRYON_ENDPOINT?.trim();
-const TRY_ON_ENDPOINT = envEndpoint || "/api/try-on";
+
+// Normalize endpoint - preserve mock mode when VITE_TRYON_ENDPOINT is not set
+// This fixes issues with misconfigured environment variables while preserving UI-only development
+function getTryOnEndpoint() {
+  const envEndpoint = import.meta.env.VITE_TRYON_ENDPOINT?.trim();
+  
+  // If no endpoint is set, return undefined to preserve mock mode
+  if (!envEndpoint) {
+    return undefined;
+  }
+  
+  // If endpoint doesn't include '/api/try-on', it's misconfigured - normalize it
+  if (!envEndpoint.includes("/api/try-on")) {
+    console.warn(
+      `VITE_TRYON_ENDPOINT is set to "${envEndpoint}" but should include "/api/try-on". ` +
+      `Using relative path "/api/try-on" instead.`
+    );
+    return "/api/try-on";
+  }
+  
+  // If endpoint is a full URL pointing to the same origin, use relative path instead
+  if (envEndpoint.startsWith("http")) {
+    try {
+      const envUrl = new URL(envEndpoint);
+      const currentOrigin = window.location.origin;
+      
+      // If it's the same origin, use relative path to avoid CORS issues
+      if (envUrl.origin === currentOrigin || envUrl.origin.includes("vercel.app")) {
+        return "/api/try-on";
+      }
+      
+      // If it's a different origin and properly configured, use it
+      return envEndpoint;
+    } catch (e) {
+      // Invalid URL, fall back to relative path
+      return "/api/try-on";
+    }
+  }
+  
+  // Already a relative path, use it
+  return envEndpoint;
+}
+
+const TRY_ON_ENDPOINT = getTryOnEndpoint();
 
 const photoTips = [
   "Face the camera with even lighting (no harsh backlight).",
