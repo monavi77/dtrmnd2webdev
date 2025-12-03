@@ -93,6 +93,7 @@ export default function BagOverlay({ isOpen, onClose }) {
   return (
     <div
       ref={overlayRef}
+      className={`bag-overlay ${isClosing ? "is-closing" : ""}`}
       style={{
         position: "fixed",
         top: 80,
@@ -113,6 +114,7 @@ export default function BagOverlay({ isOpen, onClose }) {
     >
       {/* Header */}
       <div
+        className="bag-overlay__header"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -146,6 +148,7 @@ export default function BagOverlay({ isOpen, onClose }) {
 
       {/* Content */}
       <div
+        className="bag-overlay__body"
         style={{
           overflowY: "auto",
           overflowX: "hidden",
@@ -169,6 +172,7 @@ export default function BagOverlay({ isOpen, onClose }) {
                   return (
                     <div
                       key={i}
+                      className="bag-overlay__item"
                       style={{
                         display: "grid",
                         gridTemplateColumns: "64px 1fr auto",
@@ -198,11 +202,12 @@ export default function BagOverlay({ isOpen, onClose }) {
                           Size: M • Quantity: {item.quantity}
                         </div>
                       </div>
-                      <div style={{ textAlign: "right" }}>
+                      <div className="bag-overlay__price" style={{ textAlign: "right" }}>
                         <div style={{ fontSize: 14, marginBottom: 8 }}>${totalPrice.toFixed(2)}</div>
                         <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "flex-end" }}>
                           <button
                             onClick={() => remove(i)}
+                            className="bag-overlay__qtybtn"
                             style={{
                               width: 32,
                               height: 32,
@@ -226,6 +231,7 @@ export default function BagOverlay({ isOpen, onClose }) {
                           </span>
                           <button
                             onClick={() => increment(i)}
+                            className="bag-overlay__qtybtn"
                             style={{
                               width: 32,
                               height: 32,
@@ -260,6 +266,7 @@ export default function BagOverlay({ isOpen, onClose }) {
 
               {items.length > 0 && (
                 <div
+                  className="bag-overlay__subtotal"
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -274,7 +281,7 @@ export default function BagOverlay({ isOpen, onClose }) {
                 </div>
               )}
 
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              <div className="bag-overlay__cta" style={{ display: "flex", justifyContent: "center" }}>
                 <button
                   className="addtocart"
                   onClick={() => {

@@ -25,6 +25,10 @@ function AppContent() {
   const { isOverlayOpen, setIsOverlayOpen } = useCart();
   const location = useLocation();
   const isLoginPage = location.pathname === "/login" || location.pathname === "/";
+  const hideBagButton =
+    isLoginPage ||
+    location.pathname === "/bag" ||
+    location.pathname === "/checkout";
   
   return (
     <>
@@ -45,7 +49,7 @@ function AppContent() {
         />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      {!isLoginPage && <FloatingBagButton />}
+      {!hideBagButton && <FloatingBagButton />}
       <BagOverlay
         isOpen={isOverlayOpen}
         onClose={() => setIsOverlayOpen(false)}

@@ -754,21 +754,20 @@
 /* Bag page responsive layout */
 .bag-page {
   max-width: 960px;
+  min-width: 390px;
   margin: 0 auto;
   width: 100%;
-  justify-items: center;
-  overflow-x: hidden;
+  justify-items: stretch;
 }
 .bag-card {
   padding: 16px;
-  width: min(100%, 400px);
+  width: min(100%, 520px);
   margin: 0 auto;
-  overflow-x: hidden;
 }
 .bag-line {
   gap: 14px;
   width: 100%;
-  max-width: 380px;
+  max-width: 480px;
   margin: 0 auto;
   grid-template-columns: 72px 1fr auto !important;
 }
@@ -796,13 +795,13 @@
   border-top: 1px solid var(--ring);
   padding-top: 14px !important;
   gap: 8px;
-  width: min(100%, 400px);
+  width: min(100%, 520px);
   margin: 0 auto;
 }
 .bag-actions {
   display: flex;
   gap: 12px;
-  width: min(100%, 400px);
+  width: min(100%, 520px);
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -820,33 +819,19 @@
 
 @media (max-width: 720px) {
   .bag-page {
-    padding: 0 12px;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    padding: 0 8px;
   }
   .bag-card {
     padding: 14px;
-    width: min(100%, 320px);
+    width: min(100%, 520px);
     margin: 0 auto;
-    max-height: calc(100vh - 180px);
-    overflow-y: auto;
-    overflow-x: hidden;
   }
   .bag-line {
-    grid-template-columns: 64px 1fr auto !important;
+    grid-template-columns: 72px 1fr auto !important;
     align-items: center;
     justify-items: stretch;
     row-gap: 8px;
-    max-width: 320px;
-    width: 100%;
-    overflow: hidden;
-  }
-  .bag-line__image {
-    width: 60px;
-    height: 60px;
+    max-width: 480px;
   }
   .bag-line__info div:first-child {
     white-space: normal;
@@ -855,11 +840,11 @@
   .bag-line__price {
     text-align: right !important;
     justify-self: end;
-    min-width: 100px;
+    min-width: 120px;
   }
   .bag-actions {
     flex-direction: column;
-    width: min(100%, 320px);
+    width: min(100%, 520px);
     align-items: stretch;
   }
   .bag-action-btn {
@@ -868,10 +853,10 @@
   }
   .bag-line__info {
     text-align: left;
-    max-width: 220px;
+    max-width: 260px;
   }
   .bag-subtotal {
-    width: min(100%, 320px);
+    width: min(100%, 520px);
   }
 }
 
@@ -887,29 +872,8 @@
   .bag-overlay__body {
     max-height: 320px;
   }
-  .bag-page {
-    padding: 0 12px;
-  }
   .bag-card,
-  .bag-actions,
-  .bag-subtotal,
-  .bag-line {
-    max-width: 360px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .bag-line {
-    grid-template-columns: 64px 1fr auto !important;
-    column-gap: 12px;
-  }
-  .bag-line__image {
-    width: 60px;
-    height: 60px;
-  }
-  .bag-line__price {
-    min-width: 110px;
-  }
-  .bag-action-btn {
-    font-size: 14px;
+  .bag-actions {
+    max-width: 520px;
   }
 }

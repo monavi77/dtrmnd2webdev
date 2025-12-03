@@ -822,14 +822,13 @@
   .bag-page {
     padding: 0 12px;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    justify-items: center;
     width: 100%;
   }
   .bag-card {
     padding: 14px;
-    width: min(100%, 320px);
+    width: min(100%, 300px);
     margin: 0 auto;
     max-height: calc(100vh - 180px);
     overflow-y: auto;
@@ -840,7 +839,7 @@
     align-items: center;
     justify-items: stretch;
     row-gap: 8px;
-    max-width: 320px;
+    max-width: 300px;
     width: 100%;
     overflow: hidden;
   }
@@ -859,7 +858,7 @@
   }
   .bag-actions {
     flex-direction: column;
-    width: min(100%, 320px);
+    width: min(100%, 300px);
     align-items: stretch;
   }
   .bag-action-btn {
@@ -868,10 +867,10 @@
   }
   .bag-line__info {
     text-align: left;
-    max-width: 220px;
+    max-width: 200px;
   }
   .bag-subtotal {
-    width: min(100%, 320px);
+    width: min(100%, 300px);
   }
 }
 

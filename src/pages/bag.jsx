@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Bag() {
   const { items, remove, increment, removeAll } = useCart();
@@ -14,11 +15,15 @@ export default function Bag() {
     0
   );
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <>
       <Header title="Bag" />
-      <div className="container" style={{ display: "grid", gap: 12 }}>
-        <div className="card" style={{ padding: 12 }}>
+      <div className="container bag-page" style={{ display: "grid", gap: 12 }}>
+        <div className="card bag-card" style={{ padding: 12 }}>
           {items.length === 0 ? (
             <p style={{ color: "var(--muted)" }}>Your bag is empty.</p>
           ) : (
@@ -29,6 +34,7 @@ export default function Bag() {
               return (
                 <div
                   key={i}
+                  className="bag-line"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "64px 1fr auto",
@@ -41,6 +47,7 @@ export default function Bag() {
                   <img
                     src={p.image}
                     alt={p.title}
+                    className="bag-line__image"
                     style={{
                       width: 64,
                       height: 64,
@@ -48,13 +55,13 @@ export default function Bag() {
                       borderRadius: 8,
                     }}
                   />
-                  <div>
+                  <div className="bag-line__info">
                     <div style={{ fontWeight: 600 }}>{p.title}</div>
                     <div style={{ color: "var(--muted)", fontSize: 12 }}>
                       Size: M • Quantity: {item.quantity}
                     </div>
                   </div>
-                  <div style={{ textAlign: "right" }}>
+                  <div className="bag-line__price" style={{ textAlign: "right" }}>
                     <div style={{ marginBottom: 8 }}>${totalPrice.toFixed(2)}</div>
                     <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "flex-end" }}>
                       <button
@@ -115,6 +122,7 @@ export default function Bag() {
           )}
           {items.length > 0 && (
             <div
+              className="bag-subtotal"
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -128,9 +136,9 @@ export default function Bag() {
         </div>
 
         {items.length > 0 && (
-          <div style={{ display: "flex", gap: 12 }}>
+          <div className="bag-actions" style={{ display: "flex", gap: 12 }}>
             <button
-              className="addtocart"
+              className="addtocart bag-action-btn bag-action-btn--secondary"
               onClick={() => nav("/women")}
               style={{ 
                 flex: 1,
@@ -141,7 +149,7 @@ export default function Bag() {
               Continue Shopping
             </button>
             <button
-              className="addtocart"
+              className="addtocart bag-action-btn"
               onClick={() => nav("/checkout")}
               style={{ flex: 1 }}
             >
